@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tabela</title>
+        <link rel="stylesheet" href="src/css/style.css">
+
+        <script src="src/script/cadastroToggle.js" defer></script>
+        <script src="src/script/form.js" defer></script>
+        <script src="src/script/filter.js" defer> </script>
+        <script src="src/script/delete.js" defer></script>
+        <script src="src/script/sort.js" defer></script>
+        <script src="src/script/shownNumber.js" defer></script>
+        <script src="src/script/update.js" defer></script>
+        <script src="src/script/localStorage.js" defer></script>
+        <script src="src/script/exportAndImport.js" defer></script>
+        <script src="src/script/extraInfo.js" defer></script>
+        <script src="src/script/customPopup.js" defer></script>
+    </head>
+
+    <body>
+        <div class="custom-popup">
+            <div class="container">
+                <p> Alerta Customizável </p>
+                <div class="custom-popup-buttons">
+                </div>
+            </div>
+        </div>
+        <section class="header">
+            <div class="header-first">
+                <h2 class="header-title">Pessoas</h2>
+                <div id="register" class="form-off">
+                    <div>
+                        <button id="toggle-register-form" class="btn-blue">Cadastrar pessoas</button>
+                        <ul id="message-error"></ul>
+                    </div>
+                    <form id="register-form">
+                        <input type="text" name="formName" placeholder="Digite o nome completo">
+                        <input type="text" name="formEmail" placeholder="Digite o email">
+                        <input class="btn-blue" type="submit" id="form-submit">
+                    </form>
+                </div>
+            </div>
+            <div class="header-second">
+                <div>
+                    <label for="search-box">Busca por pessoas</label>
+                    <input id='search-box' class="input-search" type="text" placeholder="Busca por nome ou e-mail">
+                </div>
+                <div>
+
+                    <p class="select-pages-quantity">
+                        Mostrar
+                        <select id="select-shown">
+                            <option>todos</option>
+                            <option>4</option>
+                            <option>8</option>
+                            <option>15</option>
+                        </select>
+                        resultados por página
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!--Header End-->
+        <section>
+            <!--Table Begin-->
+            <table class="table">
+                <thead>
+                    <th class="table-colCheCk"><button id="delete-selected">Deletar selecionados</button>   
+                    </th>
+                    <th class="table-colName">Nome
+                        <button class="sort-button">
+                            <img src="assets/icon/caret-up-fill.svg">
+                            <img src="assets/icon/caret-down-fill.svg">
+                        </button>
+                    </th>
+                    <th class="table-colLastname">Sobrenome
+                        <button class="sort-button">
+                            <img src="assets/icon/caret-up-fill.svg">
+                            <img src="assets/icon/caret-down-fill.svg">
+                        </button>
+                    </th>
+                    <th class="table-colEmail">Email
+                        <button class="sort-button">
+                            <img src="assets/icon/caret-up-fill.svg">
+                            <img src="assets/icon/caret-down-fill.svg">
+                        </button>
+                    </th>
+                    <th id="extra-info">
+                        
+                    </th>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="100%">
+                            <span></span>
+                            <ul id="tfooter-pageSelection">
+                                <li><button class="btn-blue">Anterior</button></li>
+                                <li><button class="btn-blue">Próximo</button></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+        <!--Table end-->
+        <footer>
+            <button id="import-export-table">Importar/Exportar tabela</button>
+        </footer>
+    </body>
+
+</html>

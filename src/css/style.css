@@ -1,0 +1,363 @@
+:root{
+    --background-white: #FFFFFF;
+    --list-item-primary: #FFFFFF;
+    --list-item-secondary: #ebf2f7;
+    --btn-color: #2280DE;
+    --font-family: 'Trebuchet MS', Arial, sans-serif, Courier, monospace;;
+}
+body{
+    padding: 0 15px;
+    background-color: var(--background-white);
+    font-family: var(--font-family);
+    overflow-x: hidden;
+}
+/*
+    -- Cabecalho
+*/ 
+.header>*{
+    margin: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    }
+.header-first{
+    align-items: center;
+    margin-top: 30px;
+}
+.header-first > div{
+    display: flex;
+    align-items: center;
+}
+.header-tittle{
+    font-size: 1.8rem;
+    margin: 0px;
+}
+.header-tittle + p{
+    margin-bottom: 10px;
+    
+}
+.input-search{
+    width: 40vh;
+    height: 35px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    
+}
+.input-seach::placeholder{
+    color: #CCCCCC;
+    
+}
+.btn-blue{
+    height: 35px;
+    padding: 7px 12px;
+    background-color: var(--btn-color);
+    color: var(--background-white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+.select-pages-quantity{
+    margin: 0;
+}
+.select-pages-quantity > select{
+    height: 35px;
+    width: 10ch;
+}
+/*
+    -- Formulário
+*/
+#register {
+    display: flex;
+    align-items: baseline;
+}
+#register > div{
+    display: flex;
+    flex-direction: column;
+}
+#register-form{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+}
+#register-form > input{
+    height: 30px;
+    margin: 2px 10px;
+    
+}
+.form-on{
+    transform: translateX(0px);
+    transition: 0.5s;
+}
+.form-off{
+    transform: translateX(215px);
+    transition: 0.5s;
+}
+.error-message{
+    
+    color: #FF0000;
+    font-weight: 600;
+}
+/*
+    -- Conteudo principal
+*/
+.table{
+    width: 95%;
+    margin: 15px auto;
+    background-color: var(--list-item-primary);
+    user-select: none;
+    cursor: default;
+}
+.table-colCheck{
+    width: 5%;
+}
+#delete-selected{
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 3px;
+}
+#delete-selected:hover{
+    background-color: #FF0000;
+    color: var(--background-white);
+    border-color: var(--background-white);
+}
+.table-colName{
+    width: 40%
+}
+.table-colLastname{
+    width: 25%
+}
+.table-colEmail{
+    width: 25%
+}
+#extra-info{
+    width: 5%;
+}
+.table th{
+    border-bottom: 1px solid #CCCCCC;
+    cursor: pointer;
+}
+.table td,.table th{
+    margin: 0;
+    padding: 15px;
+}
+.table-row td{
+    position: relative;
+}
+.table .table-row:nth-child(2n):not(.invisible), 
+.table .table-row:nth-child(2n):not(.not-shown){
+    background-color: var(--list-item-secondary);
+}
+.table thead{
+    background-color: var(--list-item-primary);
+}
+.table .table-name{
+    padding-left: 5%; 
+}
+.table-row.invisible{
+    display: none;
+}
+input[type='checkbox'].table-checkbox{
+    appearance: none;
+    margin: 0 auto;
+    width: 25px;
+    height: 25px;
+    
+    border: 0.15em solid #000;
+    border-radius: 5%;
+    background-color: var(--list-item-primary);
+    
+    place-content: center;
+    display: grid;
+  
+
+}
+.table-checkbox::before{
+    content: '';
+    width: 17px;
+    height: 17px;
+    border-radius: 5%;
+    background-color: var(--btn-color);
+    transform: scale(0);
+    transition: 0.1s;
+}
+.table-checkbox:checked::before{
+    transform: scale(1);
+}
+
+/*
+    Sort Buttons
+*/
+.sort-button{
+    position: relative;
+    height: 1em;
+    background: none;
+    border: none;
+}
+.sort-button img{
+    position: absolute;
+    width: 0.8rem;
+    left: 0;
+    opacity: 30%;
+}
+.sort-button img:first-child{
+    bottom: 0.5rem;
+}
+.sort-button img:last-child{
+    top: 0.1rem;
+}
+.sort-button img.active{
+    opacity: 100%;
+}
+/*
+    Extra info from table
+*/
+.extra-info{
+    position: relative;
+}
+.extra-info div{
+    position: absolute;
+    top: -2px;
+    left: -240px;
+    width: 300px;
+    height: 100px;
+    background-color: #FFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+    z-index: 100;
+    display: none;
+}
+.extra-info div p{
+    padding: 0px 15px;
+}
+/*
+    Table Footer
+*/
+#tfooter-pageSelection{
+    display: flex;
+    justify-content: end;
+}
+#tfooter-pageSelection li{
+    list-style: none;
+}
+#tfooter-pageSelection li button{
+    border: none;
+    margin: 3px;
+    padding: 5px 15px;
+}
+.not-shown{
+    display: none;
+}
+
+/*
+    Update text input
+*/
+.update-text-input{
+    transition: 1s;
+    position: absolute;
+    left: 15px;
+    width: 0;
+}
+.invalid-email{
+    position: absolute;
+    top: 30%;
+    left: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: #FF0000;
+    padding: 5px;
+}
+.invalid-email::placeholder{
+    color: #FFF;
+    font-size: 1.3em;
+}
+/*
+    Footer
+*/
+footer{
+    width: 95%;
+    margin: 15px auto;
+}
+#import-export-table{
+    background-color: var(--list-item-secondary);
+    border-radius: 5px;
+    border: 1px solid #CCCCCC;
+    cursor: pointer;
+    padding: 20px;
+    font-size: 1.5rem;
+}
+/*
+    Custom popup
+*/
+
+.custom-popup{
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+    
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #FFFFFFAA;
+    z-index: 1000;
+    user-select: none;
+}
+
+.custom-popup .container{
+    width: 600px;
+    height: 200px;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.custom-popup .container p{
+    height: 20%;
+    font-size: 1.5rem;
+    padding: 20px;
+    margin: 20px 0;
+}
+.custom-popup-buttons{
+    height: 30%;
+    font-size: 1.5rem;
+    padding: 15px;
+    margin: 0;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.import-table input[type="file"] {
+    display: none;
+
+}
+.custom-popup-buttons>*{
+    width: fit-content;
+    height: 40px;
+    margin: 0 10px;
+    padding: 10px;
+    background-color: var(--list-item-secondary);
+    border: 1px solid #555555;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.custom-popup-buttons>*:not(button){
+    height: 20px;
+}
+.custom-popup-buttons>a:link{
+    background-color: inherit;
+    color: inherit;
+    text-decoration: inherit;
+}
