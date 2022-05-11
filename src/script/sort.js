@@ -1,17 +1,19 @@
+function initializeSort(){
+    $('.sortable').each(function(){$(this).click(function(){
+        users.sort(comparer(getKeyFromTh($(this)), this.ascending = !this.ascending));
+        sortIcon(this.ascending, $(this));
+        showRows(1);
+    })})
+}
 
+function getKeyFromTh(th){
+    if(th.hasClass('table-colName')) return 'firstName';
+    if(th.hasClass('table-colLastname')) return 'lastName';
+    if(th.hasClass('table-colEmail')) return 'email';
+    if(th.hasClass('table-colTime')) return 'time';
+}
 
-table.querySelectorAll('th:not(.table-colCheCk):not(#extra-info)').forEach(th => th.addEventListener('click', (() => {
-    const tbody = table.querySelector('tbody')
-    const tableRows = tbody.querySelectorAll('tr');
-    const selector = Array.from(th.parentNode.children).indexOf(th);
-    const sortedArray = Array.from(tableRows).sort(comparer(selector, this.ascending = !this.ascending));
-    sortIcon(this.ascending, th);
-
-    sortedArray.forEach(tableRow => tbody.appendChild(tableRow));
-    showRows(1);
-})));
-
-function comparer(index, ascending) { 
+function comparer(key, ascending) { 
     //Função para o Sort
     return function(a, b) {
         return function(value1, value2) {
@@ -21,25 +23,18 @@ function comparer(index, ascending) {
                 //comparação de value1 e value 2 como strings
                 return value1.toString().localeCompare(value2);
             }
-        }(getValueTD(ascending ? a : b, index), getValueTD(ascending ? b : a, index));
+        }(ascending ? a[key] : b[key], ascending ? b[key] : a[key]);
     }
 };
-
-function getValueTD(item, index){
-    return item.children[index].textContent; //retorna o 'textContent' do trecho html
-}
-
-
 function checkValues(value){
     //Verifica se value não é vazio e é um número
     return (value !== '' && !isNaN(value));
 }
 
+
 function sortIcon(ascending, th){
-    table.querySelectorAll('.sort-button img').forEach( icon =>{
-        icon.classList.remove('active');
-    })
-    th.querySelector(
-        ascending ? '.sort-button img:last-child' : '.sort-button img:first-child')
-        .classList.add('active');    
+    $('.sort-button img').removeClass('active');
+
+    th.find(ascending ? '.sort-button img:last-child' : '.sort-button img:first-child')
+        .addClass('active');
 }

@@ -6,19 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tabela</title>
+        <link rel="stylesheet" type="text/css" href="src/css/tooltipster.bundle.css" />
         <link rel="stylesheet" href="src/css/style.css">
 
-        <script src="src/script/cadastroToggle.js" defer></script>
-        <script src="src/script/form.js" defer></script>
-        <script src="src/script/filter.js" defer> </script>
-        <script src="src/script/delete.js" defer></script>
-        <script src="src/script/sort.js" defer></script>
-        <script src="src/script/shownNumber.js" defer></script>
-        <script src="src/script/update.js" defer></script>
-        <script src="src/script/localStorage.js" defer></script>
-        <script src="src/script/exportAndImport.js" defer></script>
-        <script src="src/script/extraInfo.js" defer></script>
-        <script src="src/script/customPopup.js" defer></script>
     </head>
 
     <body>
@@ -32,7 +22,7 @@
         <section class="header">
             <div class="header-first">
                 <h2 class="header-title">Pessoas</h2>
-                <div id="register" class="form-off">
+                <div id="register">
                     <div>
                         <button id="toggle-register-form" class="btn-blue">Cadastrar pessoas</button>
                         <ul id="message-error"></ul>
@@ -65,32 +55,35 @@
             </div>
         </section>
         <!--Header End-->
+        <!--Table Begin-->
         <section>
-            <!--Table Begin-->
             <table class="table">
                 <thead>
-                    <th class="table-colCheCk"><button id="delete-selected">Deletar selecionados</button>   
+                    <th class="table-colCheCk"><button id="delete-selected">Deletar selecionados</button>
                     </th>
-                    <th class="table-colName">Nome
+                    <th class="table-colName sortable">Nome
                         <button class="sort-button">
                             <img src="assets/icon/caret-up-fill.svg">
                             <img src="assets/icon/caret-down-fill.svg">
                         </button>
                     </th>
-                    <th class="table-colLastname">Sobrenome
+                    <th class="table-colLastname sortable">Sobrenome
                         <button class="sort-button">
                             <img src="assets/icon/caret-up-fill.svg">
                             <img src="assets/icon/caret-down-fill.svg">
                         </button>
                     </th>
-                    <th class="table-colEmail">Email
+                    <th class="table-colEmail sortable">Email
                         <button class="sort-button">
                             <img src="assets/icon/caret-up-fill.svg">
                             <img src="assets/icon/caret-down-fill.svg">
                         </button>
                     </th>
-                    <th id="extra-info">
-                        
+                    <th class='table-colTime sortable' id="extra-info">
+                        <button class="sort-button">
+                            <img src="assets/icon/caret-up-fill.svg">
+                            <img src="assets/icon/caret-down-fill.svg">
+                        </button>
                     </th>
                 </thead>
                 <tbody>
@@ -112,6 +105,22 @@
         <footer>
             <button id="import-export-table">Importar/Exportar tabela</button>
         </footer>
+
+        <!-- Scripts -->
+        <script src="src/script/lib/jquery.js"></script>
+        <script src="src/script/plugin/tooltipster.bundle.js"></script>
+
+        <script src="src/script/form.js"></script>
+        <script src="src/script/user.js"></script>
+        <script src="src/script/table.js"></script>
+        <script src="src/script/localStorage.js"></script>
+        <script src="src/script/customPopup.js"></script>
+        <script src="src/script/exportAndImport.js"></script>
+        <script src="src/script/filter.js"> </script>
+        <script src="src/script/pagination.js"></script>
+        <script src="src/script/sort.js"></script>
+        
+        <script src="src/script/main.js"></script>
     </body>
 
 </html>

@@ -70,6 +70,8 @@ body{
 #register {
     display: flex;
     align-items: baseline;
+    transform: translateX(220px);
+    transition: 0.5s;
 }
 #register > div{
     display: flex;
@@ -86,18 +88,13 @@ body{
     margin: 2px 10px;
     
 }
-.form-on{
-    transform: translateX(0px);
-    transition: 0.5s;
-}
-.form-off{
-    transform: translateX(215px);
-    transition: 0.5s;
-}
 .error-message{
     
     color: #FF0000;
     font-weight: 600;
+}
+#register.form-on{
+    transform: translateX(0);
 }
 /*
     -- Conteudo principal
@@ -139,6 +136,8 @@ body{
 }
 .table th{
     border-bottom: 1px solid #CCCCCC;
+}
+.table th.sortable, .table th.sortable .sort-button{
     cursor: pointer;
 }
 .table td,.table th{
@@ -148,8 +147,7 @@ body{
 .table-row td{
     position: relative;
 }
-.table .table-row:nth-child(2n):not(.invisible), 
-.table .table-row:nth-child(2n):not(.not-shown){
+.table .table-row:nth-child(2n){
     background-color: var(--list-item-secondary);
 }
 .table thead{
@@ -157,9 +155,6 @@ body{
 }
 .table .table-name{
     padding-left: 5%; 
-}
-.table-row.invisible{
-    display: none;
 }
 input[type='checkbox'].table-checkbox{
     appearance: none;
@@ -188,7 +183,9 @@ input[type='checkbox'].table-checkbox{
 .table-checkbox:checked::before{
     transform: scale(1);
 }
-
+.table>tbody .hidden{
+    display: none;
+}
 /*
     Sort Buttons
 */
@@ -216,23 +213,8 @@ input[type='checkbox'].table-checkbox{
 /*
     Extra info from table
 */
-.extra-info{
-    position: relative;
-}
-.extra-info div{
-    position: absolute;
-    top: -2px;
-    left: -240px;
-    width: 300px;
-    height: 100px;
-    background-color: #FFF;
-    border: 1px solid #CCCCCC;
-    border-radius: 10px;
-    z-index: 100;
+.hidden-id{
     display: none;
-}
-.extra-info div p{
-    padding: 0px 15px;
 }
 /*
     Table Footer
@@ -240,6 +222,8 @@ input[type='checkbox'].table-checkbox{
 #tfooter-pageSelection{
     display: flex;
     justify-content: end;
+    float: right;
+    width: 70%;
 }
 #tfooter-pageSelection li{
     list-style: none;
@@ -249,10 +233,6 @@ input[type='checkbox'].table-checkbox{
     margin: 3px;
     padding: 5px 15px;
 }
-.not-shown{
-    display: none;
-}
-
 /*
     Update text input
 */
@@ -264,6 +244,7 @@ input[type='checkbox'].table-checkbox{
 }
 .invalid-email{
     position: absolute;
+    width: 80%;
     top: 30%;
     left: 15px;
     border: none;

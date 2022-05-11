@@ -1,9 +1,13 @@
+function initializeImportExport() {
+    $('#import-export-table').click((importExportPopup));
+}
+
 //Export Files
 function exportTable(type) {
     const allData = JSON.parse(window.localStorage.getItem('pessoas'));
     let currentData = [];
-    if (document.querySelector('.selected-only input').checked) {
-        document.querySelectorAll('.table-checkbox:checked').forEach(checkbox => {
+    if ($('.selected-only input').prop('checked')) {
+        $('.table-checkbox:checked').each(checkbox => {
             const id = getIdFromTableRow(checkbox.parentNode.parentNode);
             currentData.push(searchUser(id))
         })
@@ -12,11 +16,11 @@ function exportTable(type) {
     }
     if (type == 'JSON') {
         var data = new Blob([JSON.stringify(currentData, null, 1)]);
-        popupButtons.querySelector('a:nth-child(2)').href = URL.createObjectURL(data);
+        popupButtons.find('a:nth-child(2)').attr('href', URL.createObjectURL(data))
     }
     if (type == 'CSV') {
         var data = new Blob([convertJsonToCsv(currentData)]);
-        popupButtons.querySelector('a:nth-child(3)').href = URL.createObjectURL(data);
+        popupButtons.find('a:nth-child(3)').attr('href', URL.createObjectURL(data)); ;
     }
 }
 
@@ -37,7 +41,7 @@ function readFile(file) {
 function importTable(text, replace) {
     const importedUsers = JSON.parse(text);
     if (replace) {
-        table.querySelector('tbody').innerHTML = '';
+        tbody.html('');
         updateAllData(importedUsers);
     } else {
         printData(importedUsers);
